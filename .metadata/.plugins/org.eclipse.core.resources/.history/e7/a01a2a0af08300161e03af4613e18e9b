@@ -1,32 +1,10 @@
 package game;
-import javax.swing.*;
+import javax.swing.JFrame;
 
 public class Frame extends JFrame{
 
-	
-	final int f_widgh = 600;	// 창의 넓이 설정
-	final int f_hight = 800;	// 창의 높이 설정
-	Thread titleth;
-	JPanel titlepn;
-	
-	
-	
-	Frame(){
-		setTitle("자바 리듬 게임");		//타이틀바 이름 설정 메소드
-		setSize(f_widgh,f_hight); 	//창의 크기 지정 메소드
-		setResizable(false);	 	//창의 크기 조절 여부 설정 메소드 
-		titlepn = new Title();
-		setContentPane(titlepn);
-		
-		setVisible(true);			//창 출력 여부 메소드
-			
-	};
-	
-	
-	
-	
-	//준겹이 코드
-	/*char[][] board = new char[17][30];
+
+	char[][] board = new char[17][30];
 	int x, y;	//가로 세로의 좌표
 	int z;		//
 	int i, j;
@@ -58,5 +36,5 @@ public class Frame extends JFrame{
 			System.out.println("\n");
 		}
 
-	}*/
+	}
 }

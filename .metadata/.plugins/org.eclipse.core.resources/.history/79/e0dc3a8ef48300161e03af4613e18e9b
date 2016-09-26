@@ -16,7 +16,6 @@ public class Frame extends JFrame{
 		setSize(f_widgh,f_hight); 	//창의 크기 지정 메소드
 		setResizable(false);	 	//창의 크기 조절 여부 설정 메소드 
 		titlepn = new Title();
-		setContentPane(titlepn);
 		
 		setVisible(true);			//창 출력 여부 메소드
 			
