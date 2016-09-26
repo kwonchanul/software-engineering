@@ -1,0 +1,40 @@
+package game;
+import javax.swing.JFrame;
+
+public class Frame extends JFrame{
+
+
+	char[][] board = new char[30][17];
+	int x, y;
+	int z;
+	int i, j;
+	int a, b;
+	
+	
+
+	void printBoard(char[][] board){	
+		for (x = 0; x < 30; x++) {
+			if (x != 27 && x != 29) {     // 27, 29 번째 행은 가로줄을 찍음                    
+				for (j = 0; j < 5; j++) { // 총 5개의 세로줄 필요
+					board[x][i] = '|';
+					i = i + 4;            // 0, 4, 8 ,12, 16번째 열에만 세로줄
+				}
+			}
+			else
+				for (y = 0; y < 17; y++) {// 0~16 모든 열에 가로줄 필요
+					board[x][i] = '-';
+					x = x + 1;
+				}
+			i = 0; y = 0; // 반복문 다시 돌리려면 초기화 필요함
+		}
+		
+		for (a = 0; a < 30; a++) {
+			for (b = 0; b < 17; b++) {
+				System.out.println(board[a][b]);
+
+			}
+			System.out.println("\n");
+		}
+
+	}
+}
