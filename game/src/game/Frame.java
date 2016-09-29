@@ -1,4 +1,6 @@
 package game;
+
+import java.awt.*;
 import javax.swing.*;
 
 public class Frame extends JFrame{
@@ -6,8 +8,8 @@ public class Frame extends JFrame{
 	
 	final int f_widgh = 600;	// 창의 넓이 설정
 	final int f_hight = 800;	// 창의 높이 설정
-	Thread titleth;
-	JPanel titlepn;
+	Thread titleth ;
+	JPanel titlepn, gamepn;
 	
 	
 	
@@ -15,6 +17,7 @@ public class Frame extends JFrame{
 		setTitle("자바 리듬 게임");		//타이틀바 이름 설정 메소드
 		setSize(f_widgh,f_hight); 	//창의 크기 지정 메소드
 		setResizable(false);	 	//창의 크기 조절 여부 설정 메소드 
+		setLayout(new FlowLayout());
 		titlepn = new Title();
 		setContentPane(titlepn);
 		
@@ -22,41 +25,45 @@ public class Frame extends JFrame{
 			
 	};
 	
-	
-	
-	
-	//준겹이 코드
-	/*char[][] board = new char[17][30];
-	int x, y;	//가로 세로의 좌표
-	int z;		//
-	int i, j;
-	int a, b;
-	
-	
+	/*
+	final int frame_width = 806;  //창의 테두리때문에 실제 패널 오차 계산
+	final int frame_height = 628;
+	JPanel titlepn, selmpn, gamepn, resultpn;
+	Thread titleth, selmth, gameth, resultth, musicth;
+	String dir_data = getClass(),getResource(""),getPath()+"..\\data\\"; //상대 경로를 알아내기 위한
+	Toolkit tk = Toolkit.getDefaultToolkit(); //다용도 툴킷
+	Graphics g, buffg;
+	Image buffimage;
 
-	void printBoard(char[][] board){	
-		for (x = 0; x < 30; x++) {
-			if (x != 27 && x != 29) {     // 27, 29 번째 행은 가로줄을 찍음                    
-				for (y = 0; y < 5; y++) { // 총 5개의 세로줄 필요
-					board[x][z] = '|';
-					z = z + 4;            // 0, 4, 8 ,12, 16번째 열에만 세로줄
-				}
-			}
-			else
-				for (y = 0; y < 17; y++) {// 0~16 모든 열에 가로줄 필요
-					board[x][z] = '-';
-					z = z + 1;
-				}
-			z = 0; y = 0; // 반복문 다시 돌리려면 초기화 필요함
-		}
-		
-		for (a = 0; a < 30; a++) {
-			for (b = 0; b < 17; b++) {
-				System.out.print(board[a][b]);
+	frame(){
+	setTitle("자바 리듬 게임 - 프레이야");
+	setSize(frame_width,frame_height);
+	setResizable(false);
+	setLocation(300,200);
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	titlepn = new title();
+	setContentPane(titlepn);
 
-			}
-			System.out.println("\n");
-		}
+	setVisible(true);
+	}
 
-	}*/
+	public void callgame(String song, int diff, boolean autoplay){
+	gamepn = new gameing(song, diff, autoplay);
+	setContentPane(gamepn);
+	setVisible(true);
+	}
+
+	public void callmusicsel(){
+	selmpn = new musicsel();
+	setContentPane(selmpn);
+	setVisible(true);
+	}
+
+	public void callresult(int maxcombo, int score, int dcool, int dgood, int dbad, int dfall, boolean die, String songname, String songtitle){
+	resultpn = new result(maxcombo, score, dcool, dgood, dbad, dfall, die, songname, songtitle);
+	setContentPane(resultpn);
+	setVisible(true);
+	}
+	*/
+	
 }
