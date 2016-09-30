@@ -1,3 +1,6 @@
+// git 연습하느라 주석좀 달자
+
+
 package game;
 
 import java.awt.*;
