@@ -1,0 +1,68 @@
+package Tast;
+
+import java.awt.*;
+import java.awt.event.*;
+class MyList_sub extends Frame implements ItemListener,ActionListener{
+ 
+ List li=new List(3,false);
+ TextField tf=new TextField();
+ TextField tf1=new TextField(20);
+ Button bt=new Button("ªË¡¶");
+ int index=0;
+ public MyList_sub(){
+  this.init();
+  this.start();
+  this.setSize(300,200);
+  this.setVisible(true);
+  
+ }
+ public void init(){
+  this.setLayout(new BorderLayout());
+  
+  this.add("Center",li);
+  this.add("North",tf);
+  Panel fl=new Panel(new FlowLayout());
+  fl.add(tf1); fl.add(bt);
+  this.add("South",fl);
+  tf.setBackground(Color.LIGHT_GRAY);
+ }
+ public void start(){
+  
+  li.addItemListener(this);
+  tf.addActionListener(this);
+  tf1.addActionListener(this);
+  bt.addActionListener(this);
+ }
+ public void itemStateChanged(ItemEvent e) {
+  // TODO Auto-generated method stub
+  if(e.getSource()==li){
+   String aaa=li.getSelectedItem();
+   index=li.getSelectedIndex();
+   tf1.setText(aaa);
+  }
+ }
+ public void actionPerformed(ActionEvent e) {
+  String str=tf.getText().trim();
+  if(e.getSource()==tf){
+   li.add(str);
+   tf.setText("");
+   tf.requestFocus();
+  }else if(e.getSource()==bt){
+   li.remove(index);
+   tf1.setText("");
+   
+  }
+  
+ }
+ 
+ 
+}
+public class MyList {
+ /**
+  * @param args
+  */
+ public static void main(String[] args) {
+  // TODO Auto-generated method stub
+  MyList_sub ms=new MyList_sub();
+ }
+}

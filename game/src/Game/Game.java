@@ -1,9 +1,11 @@
 package Game;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
-public class Game extends JPanel {
+public class Game extends JPanel implements ActionListener {
 	public Game(){
 
 
