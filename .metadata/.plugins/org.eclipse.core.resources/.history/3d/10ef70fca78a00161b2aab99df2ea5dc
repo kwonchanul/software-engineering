@@ -1,0 +1,15 @@
+package Game;
+
+private class ListListener implements ListSelectionListener
+{
+    public void valueChanged(ListSelectionEvent e)
+    {
+        // 선택된 도시를 얻는다.
+        String selection = (String) list.getSelectedValue();
+        // 선택된 도시를 텍스트 필드에 기록한다.
+        selected.setText(selection);
+       
+        ImageIcon icon = new ImageIcon(selection + ".jpg");//선택된 도시의 이미지 로딩
+        imgLabel.setIcon(icon);//이미지 넣기
+    }
+}
