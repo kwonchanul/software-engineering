@@ -1,30 +1,27 @@
 package Rhythm;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class Result extends JPanel {
-	JButton b;
-	GameHandler handle;
+	private JButton mainmenu, restart;
 	
-	public Result(GameHandler handle) {
-		this.handle = handle;
-		b = new JButton("Result");
-		b.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				restart();
-				
-			}
-		});
-		this.add(b);
 
+	public Result() {
+		//점수 띄우는 내용 삽입 예
+		init();
+	
+		setVisible(true); // 패널이 보임
 	}
-
+	
+	void init(){
+		mainmenu = new JButton("메인 메뉴"); // 메인메뉴 버튼
+		restart = new JButton("다시 시작"); // 다시 시작 버튼
+		this.add(mainmenu);
+		this.add(restart);
+	}
+}
 	public void restart(){
 		handle.backTitle();
 	}
