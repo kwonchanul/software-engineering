@@ -38,7 +38,7 @@ public class Setting extends JFrame implements Runnable {
 
 	public void run() {
 
-		speedup.addActionListener(new ActionListener() {
+		speedup.addActionListener(new ActionListener() { // 속도 증가
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -50,7 +50,7 @@ public class Setting extends JFrame implements Runnable {
 			}
 		});
 
-		speeddown.addActionListener(new ActionListener() {
+		speeddown.addActionListener(new ActionListener() { // 속도 감소
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -62,7 +62,7 @@ public class Setting extends JFrame implements Runnable {
 			}
 		});
 
-		syncup.addActionListener(new ActionListener() {
+		syncup.addActionListener(new ActionListener() { // 싱크 증가
 
 			public void actionPerformed(ActionEvent arg0) {
 				while (syncvalue < 100) {
@@ -73,7 +73,7 @@ public class Setting extends JFrame implements Runnable {
 			}
 		});
 
-		syncdown.addActionListener(new ActionListener() {
+		syncdown.addActionListener(new ActionListener() { // 싱크 감소
 
 			public void actionPerformed(ActionEvent arg0) {
 				while (syncvalue > 1) {
@@ -81,6 +81,41 @@ public class Setting extends JFrame implements Runnable {
 					currentsync.setText(String.valueOf(syncvalue));
 					break;
 				}
+			}
+		});
+
+		exit.addActionListener(new ActionListener() { // 메인메뉴로
+
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
+
+		bgmon.addActionListener(new ActionListener() { // 배경음 키기
+
+			public void actionPerformed(ActionEvent arg0) {
+				bgmsign = true;
+			}
+		});
+
+		bgmoff.addActionListener(new ActionListener() { // 배경음 끄기
+
+			public void actionPerformed(ActionEvent arg0) {
+				bgmsign = false;
+			}
+		});
+
+		efson.addActionListener(new ActionListener() { // 효과음 키기
+
+			public void actionPerformed(ActionEvent arg0) {
+				efssign = true;
+			}
+		});
+
+		efsoff.addActionListener(new ActionListener() { // 효과음 끄기
+
+			public void actionPerformed(ActionEvent arg0) {
+				efssign = false;
 			}
 		});
 
@@ -142,6 +177,7 @@ public class Setting extends JFrame implements Runnable {
 		add(panel);
 
 		setSize(300, 500);
+		setResizable(false);
 		setTitle("리듬게임 환경설정");
 		setVisible(true);
 
