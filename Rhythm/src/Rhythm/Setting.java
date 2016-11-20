@@ -12,135 +12,139 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Setting extends JFrame implements Runnable {
-	 
-		int speeds; //¼Óµµ
-		double speedvalue, syncvalue; // ¼Óµµ°ª, ½ÌÅ©°ª
-		boolean bgmsign, efssign; // ¹è°æÀ½, È¿°úÀ½
-		JPanel panel;
-		JLabel title, speed, currentspeed, sync, currentsync, bgm, effectsound;
-		JButton speedup, speeddown, syncup, syncdown, bgmon, bgmoff, efson, efsoff, exit;
-	 
-		public Setting() {
-			speeds = 2;
-			syncvalue = 90;
-			bgmsign = true;
-			efssign = true;
-	 
-			init();
-			
-			this.addWindowListener(new WindowAdapter() {
-				public void windowClosing(WindowEvent e) {
-					
-									}
-			});
-			
-		}
-			
-		public void run() {
-			
-			speedup.addActionListener(new ActionListener() {
-				 
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
+
+	int speeds; // ì†ë„
+	double speedvalue, syncvalue; // ì†ë„ê°’, ì‹±í¬ê°’
+	boolean bgmsign, efssign; // ë°°ê²½ìŒ, íš¨ê³¼ìŒ
+	JPanel panel;
+	JLabel title, speed, currentspeed, sync, currentsync, bgm, effectsound;
+	JButton speedup, speeddown, syncup, syncdown, bgmon, bgmoff, efson, efsoff, exit;
+
+	public Setting() {
+		speeds = 2;
+		syncvalue = 50.0;
+		bgmsign = true;
+		efssign = true;
+
+		init();
+
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+
+			}
+		});
+
+	}
+
+	public void run() {
+
+		speedup.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				while (speeds < 5) {
 					speeds = speeds + 1;
 					currentspeed.setText("x" + String.valueOf(speeds));
+					break;
 				}
-			});
-	 
-			speeddown.addActionListener(new ActionListener() {
-	 
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					while (speedvalue > 0) {
-						speeds = speeds - 1;
-						currentspeed.setText("x" + String.valueOf(speeds));
-						break;
-					}
+			}
+		});
+
+		speeddown.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				while (speeds > 1) {
+					speeds = speeds - 1;
+					currentspeed.setText("x" + String.valueOf(speeds));
+					break;
 				}
-			});
-	 
-			syncup.addActionListener(new ActionListener() {
-	 
-				public void actionPerformed(ActionEvent arg0) {
-					syncvalue = syncvalue + 0.1;
-					currentsync.setText(String.valueOf(syncvalue));
-				}
-			});
-	 
-			syncdown.addActionListener(new ActionListener() {
-	 
-				public void actionPerformed(ActionEvent arg0) {
-					while(syncvalue>0)
-					{
-					syncvalue = syncvalue - 0.1;
+			}
+		});
+
+		syncup.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				while (syncvalue < 100) {
+					syncvalue = (syncvalue * 10 + 1.0) / 10.0;
 					currentsync.setText(String.valueOf(syncvalue));
 					break;
-					}
 				}
-			});
-	 
-	 
-		};
-	 
-		public void init() {
-			panel = new JPanel();
-			title = new JLabel("¸®µë°ÔÀÓ È¯°æ¼³Á¤");
-			speed = new JLabel("³ëÆ® ¼Óµµ");
-			currentspeed = new JLabel("x" + String.valueOf(speeds));
-			speedup = new JButton("¡ã");
-			speeddown = new JButton("¡å");
-			sync = new JLabel("³ëÆ® ½ÌÅ©");
-			currentsync = new JLabel(String.valueOf(syncvalue));
-			syncup = new JButton("¡ã");
-			syncdown = new JButton("¡å");
-			bgm = new JLabel("¹è°æÀ½");
-			bgmon = new JButton("ÄÑ±â");
-			bgmoff = new JButton("²ô±â");
-			effectsound = new JLabel("È¿°úÀ½");
-			efson = new JButton("ÄÑ±â");
-			efsoff = new JButton("²ô±â");
-			exit = new JButton("¸ŞÀÎÈ­¸éÀ¸·Î");
-			panel.setLayout(null);
-			
-			panel.add(title);
-			panel.add(speed);
-			panel.add(currentspeed);
-			panel.add(speedup);
-			panel.add(speeddown);
-			panel.add(sync);
-			panel.add(currentsync);
-			panel.add(syncup);
-			panel.add(syncdown);
-			panel.add(exit);
-			panel.add(bgm);
-			panel.add(bgmon);
-			panel.add(bgmoff);
-			panel.add(effectsound);
-			panel.add(efson);
-			panel.add(efsoff);
-	 
-			title.setBounds(90, 5, 110, 30);
-			speed.setBounds(40, 50, 80, 30);
-			currentspeed.setBounds(110, 50, 30, 30);
-			speedup.setBounds(150, 40, 50, 20);
-			speeddown.setBounds(150, 70, 50, 20);
-			sync.setBounds(40, 130, 80, 30);
-			currentsync.setBounds(110, 130, 40, 30);
-			syncup.setBounds(150, 120, 50, 20);
-			syncdown.setBounds(150, 150, 50, 20);
-			bgm.setBounds(40, 210, 50, 30);
-			bgmon.setBounds(100, 210, 60, 30);
-			bgmoff.setBounds(180, 210, 60, 30);
-			effectsound.setBounds(40, 280, 50, 30);
-			efson.setBounds(100, 280, 60, 30);
-			efsoff.setBounds(180, 280, 60, 30);
-			exit.setBounds(130, 400, 130, 30);
-			add(panel);
-			
-			setSize(300, 500);
-			setTitle("MyFrame");
-			setVisible(true);
-			
+			}
+		});
+
+		syncdown.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				while (syncvalue > 1) {
+					syncvalue = (syncvalue * 10 - 1.0) / 10.0;
+					currentsync.setText(String.valueOf(syncvalue));
+					break;
+				}
+			}
+		});
+
+	};
+
+	public void init() {
+		panel = new JPanel();
+		title = new JLabel("ë¦¬ë“¬ê²Œì„ í™˜ê²½ì„¤ì •");
+		speed = new JLabel("ë…¸íŠ¸ ì†ë„");
+		currentspeed = new JLabel("x" + String.valueOf(speeds));
+		speedup = new JButton("â–²");
+		speeddown = new JButton("â–¼");
+		sync = new JLabel("ë…¸íŠ¸ ì‹±í¬");
+		currentsync = new JLabel(String.valueOf(syncvalue));
+		syncup = new JButton("â–²");
+		syncdown = new JButton("â–¼");
+		bgm = new JLabel("ë°°ê²½ìŒ");
+		bgmon = new JButton("ì¼œê¸°");
+		bgmoff = new JButton("ë„ê¸°");
+		effectsound = new JLabel("íš¨ê³¼ìŒ");
+		efson = new JButton("ì¼œê¸°");
+		efsoff = new JButton("ë„ê¸°");
+		exit = new JButton("ë©”ì¸í™”ë©´ìœ¼ë¡œ");
+		panel.setLayout(null);
+
+		panel.add(title);
+		panel.add(speed);
+		panel.add(currentspeed);
+		panel.add(speedup);
+		panel.add(speeddown);
+		panel.add(sync);
+		panel.add(currentsync);
+		panel.add(syncup);
+		panel.add(syncdown);
+		panel.add(exit);
+		panel.add(bgm);
+		panel.add(bgmon);
+		panel.add(bgmoff);
+		panel.add(effectsound);
+		panel.add(efson);
+		panel.add(efsoff);
+
+		title.setBounds(90, 5, 110, 30);
+		speed.setBounds(40, 50, 80, 30);
+		currentspeed.setBounds(110, 50, 30, 30);
+		speedup.setBounds(150, 40, 50, 20);
+		speeddown.setBounds(150, 70, 50, 20);
+		sync.setBounds(40, 130, 80, 30);
+		currentsync.setBounds(110, 130, 40, 30);
+		syncup.setBounds(150, 120, 50, 20);
+		syncdown.setBounds(150, 150, 50, 20);
+		bgm.setBounds(40, 210, 50, 30);
+		bgmon.setBounds(100, 210, 60, 30);
+		bgmoff.setBounds(180, 210, 60, 30);
+		effectsound.setBounds(40, 280, 50, 30);
+		efson.setBounds(100, 280, 60, 30);
+		efsoff.setBounds(180, 280, 60, 30);
+		exit.setBounds(130, 400, 130, 30);
+		add(panel);
+
+		setSize(300, 500);
+		setTitle("ë¦¬ë“¬ê²Œì„ í™˜ê²½ì„¤ì •");
+		setVisible(true);
+
 		this.addWindowListener(new WindowListener() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -152,42 +156,40 @@ public class Setting extends JFrame implements Runnable {
 			@Override
 			public void windowActivated(WindowEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void windowClosed(WindowEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void windowDeactivated(WindowEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void windowDeiconified(WindowEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void windowIconified(WindowEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void windowOpened(WindowEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 
-		}
+	}
 
-		
 }
-
